@@ -37,3 +37,17 @@ ENTRYPOINT [ "node", "app.js" ]
 # Correr una imagen local o remota (si es remota, primero se descarga)
 # -d = Correr el contenedor en sugndo plano, no vinculado a este terminal
 # docker container run -d --name web -p 8000:8080 jaramosdal/gsd:first-ctr
+
+# -it = interactive con el terminal
+# docker container run -it --name web -p 8000:8080 jaramosdal/gsd:first-ctr
+
+# Parar un contenedor. Le da a la aplicación 10 segundos para finalizar de forma efectiva con un SIGTERM. En caso contrario, se realizará un SIGKILL.
+# docker container stop web
+
+# Volver a inicar un contenedor
+# docker container start web
+
+# Borrar contenedor
+# docker container rm web
+# -f = lo finaliza aunque esté corriendo
+# docker container rm web -f
