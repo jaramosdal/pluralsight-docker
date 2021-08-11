@@ -1,8 +1,10 @@
+# This is a declarative manifest file describing an app.
+
 version: "3.8"
 services:
   web-fe:
-    build: .
-    command: python app.py
+    build: . # Llama al Dockerfile para construir la imagen
+    command: python app.py # Comando que se ejecutará al iniciarse el contenedor
     ports:
       - target: 5000
         published: 5000
@@ -13,7 +15,7 @@ services:
         source: counter-vol
         target: /code
   redis:
-    image: "redis:alpine"
+    image: "redis:alpine" # Imagen base del Docker Hub
     networks:
       counter-net:
 
@@ -22,3 +24,24 @@ networks:
 
 volumes:
   counter-vol:
+
+#-d = detached => corre en segundo plano, no vinculado a la consola
+# docker-compose up -d
+# docker-compose down
+
+# docker swarm init
+# docker service create --name web -p 8080:8080 --replicas 3 jaramosdal/gsd:first-ctr
+
+# docker service ls 
+
+# Ver todos los contenedores corriendo en el nodo local
+# docker container ls
+
+# Ver todos los contenedores corriendo en todos los nodos
+# docker service ps web
+
+# Eliminar contenedor
+# docker service rm web
+
+# Escalar un servicio
+# docker service scale web=10
