@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   web-fe:
-    image: nigelpoulton/gsd:swarm-stack
+    image: jaramosdal/gsd:swarm-stack
     command: python app.py
     deploy:
       replicas: 10
@@ -24,3 +24,12 @@ networks:
 
 volumes:
   counter-vol:
+
+# En un docker swarm no se permite crear una imagen directamente de manera declarativa dentro del docker-compose.yml
+# docker image build -t jaramosdal/gsd:swarm-stack .
+# docker image push jaramosdal/gsd:swarm-stack
+# docker stack deploy -c docker-compose.yml counter             Si ya existe lo actualiza
+# docker stack ls
+# docker stack services counter
+# docker stack ps counter
+# docker stack rm counter
